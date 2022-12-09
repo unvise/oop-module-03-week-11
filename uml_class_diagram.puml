@@ -1,0 +1,57 @@
+@startuml
+abstract class PrintedEdition {
+    - String name
+    - Integer pages
+    # PrintedEdition()
+    # PrintedEdition(String name, Integer pages)
+    + String getName()
+    + Integer getPages()
+    + void setName()
+    + void attachPages(Integer count)
+    + abstract String read()
+    + abstract void write() throws NotWriteableException()
+    + abstract Boolean isReadable()
+    + abstract Boolean isWriteable()
+    + String toString()
+    + int hashCode()
+    + Boolean equals()
+}
+class Book {
+    - String author
+    + Book()
+    + Book(String name, Integer pages, String author)
+    + getAuthor()
+    + setAuthor()
+    + String toString()
+    + int hashCode()
+    + Boolean equals()
+    + BookBuilder builder()
+}
+class TextBook {
+    - String publishingHouse
+    + TextBook()
+    + TextBook(String name, Integer pages, String author, String publishingHouse)
+    + getPublishingHouse()
+    + setPublishingHouse()
+    + String toString()
+    + int hashCode()
+    + Boolean equals()
+    + TextBookBuilder builder()
+}
+class Log {
+    - LocalDateTime created
+    - LocalDateTime updated
+    + Log()
+    + Log(String name, Integer pages)
+    + getCreated()
+    + getUpdated()
+    + String toString()
+    + int hashCode()
+    + Boolean equals()
+    + LogBuilder builder()
+}
+
+PrintedEdition <|-- Book
+PrintedEdition <|-- Log
+Book <|-- TextBook
+@enduml
